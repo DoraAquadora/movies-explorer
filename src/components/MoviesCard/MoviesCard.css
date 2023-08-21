@@ -1,0 +1,58 @@
+.card{
+
+}
+
+.card__image{
+    width: 100%;
+    /* height: 151px; */
+    object-fit: cover;
+}
+
+.card__container{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.card__container-title{
+    border-bottom: 1px solid #424242;
+    display: flex;
+    padding-bottom: 24px;
+    justify-content: space-between;
+}
+
+
+.card__title{
+    width: 226px;
+    color: #FFF;
+    margin: 0;
+    padding-top: 14px;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+.card__time{
+    padding-top: 6px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #a0a0a0;
+}
+
+.card__delete{
+    -webkit-tap-highlight-color: transparent;
+    all: unset;
+    background: url('../../images/like-active.png') 50% no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    min-height: 19px;
+    align-self: end;
+    min-width: 22px;
+    transition: opacity .3s linear;
+}
