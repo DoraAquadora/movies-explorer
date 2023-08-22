@@ -1,17 +1,15 @@
-import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import Footer from '../Footer/Footer';
+import SavedMoviesList from '../SavedMoviesList/SavedMoviesList';
+import Footer from '../Footer/Footer'
 
-function SavedMovies() {
+function SavedMovies () {
   return (
-    <section className="movies">
-      <Header />
+    <main>
       <SearchForm />
-      <MoviesCardList />
+      <SavedMoviesList />
       <Footer />
-    </section>
-  );
+    </main>
+  )
 }
 
 export default SavedMovies;

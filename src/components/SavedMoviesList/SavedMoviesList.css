@@ -1,0 +1,44 @@
+.save-cards{
+padding: 0px 70px 0px;
+}
+
+.save-cards__list{
+margin: 0;
+padding: 79px 0 0 0;
+border-top: 1px solid #424242;
+list-style: none;
+display: grid;
+grid-template-columns: repeat(auto-fit, 270px);
+grid-template-rows: repeat(2, 1fr);
+row-gap: 38px;
+column-gap: 20px;
+}
+
+
+@media (max-width:840px) {
+.save-cards{
+padding: 0px 30px 169px;
+}
+
+.save-cards__list{
+grid-template-columns: repeat(auto-fit, 339px);
+column-gap: 30px;
+row-gap: 30px;
+}
+}
+
+
+@media (max-width:540px) {
+.save-cards{
+padding: 0px 10px 169px;
+}
+
+.save-cards__list{
+padding: 50px 0 0 0;
+grid-template-columns: repeat(auto-fit, 300px);
+column-gap: 30px;
+row-gap: 34px;
+}
+}
+
+

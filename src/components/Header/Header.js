@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import Headerimg from '../../images/logo-header.png';
-import Profile from '../../images/profile.png';
+import Headerimg from '../../images/logo.svg';
+import Profile from '../../images/account.svg';
 import Navigation from "../Navigation/Navigation";
-import Menu from '../../images/icon__COLOR_icon-main.png';
+import Menu from '../../images/menu.svg';
 import './header.css';
 
 
@@ -42,7 +42,7 @@ function Header ({loggedOut, loggedIn }){
     )}
 
 {loggedIn && (
-        <header className="header header__movies">
+        <header className="header header_type_movies">
           <Link to="/" className="header__img">
             <img src={Headerimg} alt="логотип" />
           </Link>

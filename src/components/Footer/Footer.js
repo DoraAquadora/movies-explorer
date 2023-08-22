@@ -3,9 +3,9 @@ import './Footer.css'
 function Footer () {
   return (
     <footer className="footer">
-      <h4 className="footer__title">
+      <h2 className="footer__title">
         Учебный проект Яндекс.Практикум х BeatFilm.
-      </h4>
+      </h2>
       <div className="footer__wrap">
         <p className="footer__copyright">&copy; 2023</p>
         <a
@@ -16,7 +16,7 @@ function Footer () {
           Яндекс.Практикум
         </a>
         <a
-          href="*"
+          href="https://github.com/DoraAquadora"
           className="footer__link"
           target="_blank"
           rel="noreferrer">

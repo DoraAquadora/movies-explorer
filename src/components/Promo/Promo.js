@@ -1,5 +1,5 @@
 import './Promo.css';
-import landingLogo from '../../images/promo-img.png';
+import landingLogo from '../../images/main-img.png';
 function Promo () {
     return(
         <section className="promo">

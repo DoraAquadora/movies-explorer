@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import AccountIcon from '../../images/profile.png';
-import close from '../../images/close.png';
+import AccountIcon from '../../images/account.svg';
+import close from '../../images/close.svg';
 import './Navigation.css';
 
 function Navigation ({handleClose}) {

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Form.css';
-import Headerimg from '../../images/logo-header.png';
+import Headerimg from '../../images/logo.svg';
 
 function Form({ children, title, buttonText, text, routText, rout, buttonRout }) {
   return (

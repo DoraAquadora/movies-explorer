@@ -1,24 +1,22 @@
+import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
-import MoviesCard from '../MoviesCard/MoviesCard ';
 
-function MoviesCardList () {
+const MoviesCardList = () => {
+  const cards = [
+    '1.png',  '1.png',  '1.png',  '1.png',  '1.png'
+  ]
   return (
-    <section className="cards">
-        <div className='cards__list'>
-            <MoviesCard/>
-            <MoviesCard/>
-            <MoviesCard/>
-            <MoviesCard/>
-            <MoviesCard/>
-
-        </div>
-        <div className='cards__button-wrap'>
-            <button className='cards__button'type='button'>Ещё</button>
-        </div>
+    <section className="cards" aria-label="список фильмов">
+      <ul className="cards__list">
+        {cards.map((card, i) => (
+          <MoviesCard path={card} key={i} />
+        ))}
+      </ul>
+      <div className='cards__button-wrap'>
+    <button className='cards__button'type='button'>Ещё</button>
+</div>
     </section>
-
-
-  );
+  )
 }
 
 export default MoviesCardList;

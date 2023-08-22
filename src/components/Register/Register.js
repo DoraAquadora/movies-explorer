@@ -12,6 +12,7 @@ function Register() {
         Имя
         <input
           name="name"
+          placeholder='имя'
           className="form__input"
           id="name"
           type="text"
@@ -20,10 +21,11 @@ function Register() {
           required
         />
       </label>
-      <label className="form__placeholder">
+      <label className="form__placeholder" htmlFor="email-input">
         E-mail
         <input 
-        name="email" 
+        name="email"
+        placeholder='email'
         className="form__input" 
         id="email" 
         type="email" 
@@ -32,7 +34,8 @@ function Register() {
       <label className="form__placeholder">
         Пароль
         <input 
-        name="password" 
+        name="password"
+        placeholder='Пароль'
         className="form__input" 
         id="password" 
         type="password"

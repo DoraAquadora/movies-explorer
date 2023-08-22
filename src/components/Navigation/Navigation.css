@@ -52,6 +52,10 @@ width: max-content;
 border-bottom: 2px solid #FFF;
 }
 
+.navigation__account-button{
+height: 42px;
+}
+
 
 @media (max-width: 840px) {
 .navigation{
@@ -77,6 +81,9 @@ width: 100%;
 }
 .navigation__menu {
 gap: 24px;
-
+}
+.navigation__button-close {
+    top: 12px;
+    right: 30px;
 }
 }

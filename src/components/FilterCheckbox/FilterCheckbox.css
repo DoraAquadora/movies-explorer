@@ -3,7 +3,7 @@ display: flex;
 align-items: center;
 background: #2F2F2F;
 gap: 14px;
-padding-right: 43px;
+padding-right: 30px;
 border-radius: 0px 9px 9px 0px;
 }
 
@@ -60,7 +60,7 @@ display: flex;
 align-items: center;
 background: #2F2F2F;
 gap: 14px;
-padding-right: 30px;
+padding-right: 20px;
 border-radius: 0px 9px 9px 0px;
 }
 

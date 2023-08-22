@@ -1,11 +1,13 @@
 .notfound {
 display: flex;
+height: 100%;
+min-height: 100vh;
 flex-direction: column;
-align-items: center;
 }
 
 .notfound__title {
 margin-top: 246px;
+margin-bottom: 5px;
 color: #FFF;
 font-style: normal;
 font-weight: 400;
@@ -15,7 +17,7 @@ text-align: center;
 }
 
 .notfound__text {
-margin-top: 5px;
+margin: 0;
 color: #FFF;
 font-style: normal;
 font-weight: 400;
@@ -55,12 +57,12 @@ margin-bottom: 222px;
 @media screen and (max-width: 480px) {
 .notfound__title {
 margin-top: 329px;
+margin-bottom: 9px;
 font-size: 80px;
 line-height: 97px;
 }
 
 .notfound__text {
-margin-top: 10px;
 font-size: 12px;
 line-height: 15px;
 }
