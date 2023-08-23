@@ -48,8 +48,9 @@ color: #FFF;
 width: max-content;
 }
 
-.navigation__link:hover {
+.navigation__link_active {
 border-bottom: 2px solid #FFF;
+padding-bottom: 4px;
 }
 
 .navigation__account-button{

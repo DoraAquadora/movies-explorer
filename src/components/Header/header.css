@@ -65,18 +65,15 @@ background-color: #202020;
 .header__container-films{
 display: flex;
 gap: 16px;
+align-items: center;
 margin-left: 44px;
 }
 
 .header__films{
-min-height: 32px;
 font-style: normal;
 font-weight: 500;
 font-size: 12px;
 line-height: 16px;
-display: flex;
-align-items: center;
-justify-content: center;
 color: #FFF;
 text-decoration: none;
 }
@@ -84,6 +81,12 @@ text-decoration: none;
 .header__films:hover{
 cursor: pointer;
 opacity: 0.6;
+}
+
+.header__films_active{
+border-bottom: 2px solid #424242;
+margin-bottom: -10px;
+padding-bottom: 8px;
 }
 
 .header__container-profile{

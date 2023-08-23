@@ -1,14 +1,13 @@
-import Form from '../Form/Form';
+import { Link } from 'react-router-dom';
+import './login.css';
+import Logo from '../Logo/Logo';
 
-function Login() {
+function Login () {
   return (
-    <Form
-      title="Рады видеть!"
-      buttonText="Войти"
-      text="Еще не зарегистрированы?"
-      routText=" Регистрация"
-      rout="/signup"
-      buttonRout='/movies' >
+    <div className="form">
+      <Logo login/>
+      <h2 className="form__title">Рады видеть!</h2>
+      <form className="form__container" >
       <label className="form__placeholder">
         E-mail
         <input 
@@ -19,6 +18,7 @@ function Login() {
         type="email" 
         minLength="2"
         maxLength="40"
+        autoComplete='on'
         required />
       </label>
       <label className="form__placeholder">
@@ -32,9 +32,15 @@ function Login() {
         maxLength="40"
         type="password" 
         required/>
-        <span className="form__input-error">Что-то пошло не так...</span>
       </label>
-    </Form>
+       <button type='submit'  className="form__button" > Войти </button>
+      </form>
+      <p className="form__text">
+      Еще не зарегистрированы?
+        <Link className="form__link" to='/signup'>Регистрация</Link>
+      </p>
+    </div>
+  
   );
 }
 

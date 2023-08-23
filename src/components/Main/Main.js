@@ -8,6 +8,7 @@ import Footer from "../Footer/Footer";
 
 function Main () {
     return(
+        <>
     <main>
         <Header/>
         <Promo/>
@@ -15,8 +16,9 @@ function Main () {
         <Techs/>
         <AboutMe/>
         <Portfolio/>
-        <Footer/>
     </main>
+      <Footer/>
+      </>
     );
 }
 

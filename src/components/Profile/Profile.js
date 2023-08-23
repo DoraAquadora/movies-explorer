@@ -4,9 +4,14 @@ import { useState } from 'react'
 function Profile() {
   const [handleChangeInputs, setHandleChangeInputs] = useState(false);
 
+  function handleChange(e) {
+    e.preventDefault()
+  }
+
   return (
+    <main>
     <section className="profile">
-      <h3 className="profile__title">Привет, Виталий!</h3>
+      <h1 className="profile__title">Привет, Виталий!</h1>
       <form className="profile__form" noValidate>
         <label className="profile__placeholder" htmlFor="name-input">
           Имя
@@ -18,6 +23,8 @@ function Profile() {
             type="text"
             minLength="2"
             maxLength="40"
+            onClick={() => setHandleChangeInputs(!handleChangeInputs)}
+            onSubmit={handleChange}
             required
           />
         </label>
@@ -37,9 +44,11 @@ function Profile() {
           <>
           <span className='profile__submit-error'>При обновлении профиля произошла ошибка.</span>
           <button
-          type="button"
+          type="submit"
           className="profile__submit "
           onClick={() => setHandleChangeInputs(!handleChangeInputs)}
+          onSubmit={handleChange}
+
         >
           Сохранить
         </button>
@@ -48,9 +57,8 @@ function Profile() {
           <>
           <button 
           type="button" 
-          className="profile__button-save"
-          onClick={() => setHandleChangeInputs(!handleChangeInputs)}
-          >
+          className="profile__button-save" 
+           >
           Редактировать
         </button>
         <button className="profile__logout" type='button'>Выйти из аккаунта</button>
@@ -60,6 +68,7 @@ function Profile() {
 
       </form>
     </section>
+    </main>
   );
 }
 

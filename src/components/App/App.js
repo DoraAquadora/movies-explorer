@@ -13,7 +13,6 @@ import NotFound from '../NotFound/NotFound';
 function App (){
   return (
     <div className='app' >
-      <div className='app__content'>
         <Routes>
         <Route
           path="/"
@@ -85,7 +84,6 @@ function App (){
         />
         
         </Routes>
-      </div>
     </div>
 
   );

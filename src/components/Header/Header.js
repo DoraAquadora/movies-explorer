@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from 'react';
-import Headerimg from '../../images/logo.svg';
 import Profile from '../../images/account.svg';
 import Navigation from "../Navigation/Navigation";
 import Menu from '../../images/menu.svg';
+import Logo from '../Logo/Logo';
 import './header.css';
 
 
@@ -21,9 +21,7 @@ function Header ({loggedOut, loggedIn }){
       <>
       {loggedOut && (
         <header className="header">
-          <Link to="/" className="header__img">
-            <img src={Headerimg} alt="логотип" />
-          </Link>
+            <Logo/>
           <nav className="header__container">
             <Link
               className="header__auth "
@@ -43,23 +41,26 @@ function Header ({loggedOut, loggedIn }){
 
 {loggedIn && (
         <header className="header header_type_movies">
-          <Link to="/" className="header__img">
-            <img src={Headerimg} alt="логотип" />
-          </Link>
+            <Logo/>
           <div className="header__container-films">
-            <Link
-              className="header__films"
+            <NavLink
+              // className="header__films"
+              className={({isActive}) =>
+            `header__films ${isActive ? 'header__films_active' : ''} `
+            }
               to="/movies"
             >
               Фильмы
-            </Link>
+            </NavLink>
 
-            <Link
-              className="header__films"
+            <NavLink
+              className={({isActive}) =>
+              `header__films ${isActive ? 'header__films_active' : ''} `
+              }
               to="/saved-movies"
             >
               Сохраненные фильмы
-            </Link>
+            </NavLink>
           </div>
           <div className="header__container-profile">
           <Link to="/profile" className="header__profile-link ">

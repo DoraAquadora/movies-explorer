@@ -6,11 +6,13 @@ import Footer from '../Footer/Footer';
 const Movies = () => {
 
   return (
+    <>
     <main className='movies'>
     <SearchForm />
         <MoviesCardList />
-    <Footer />
     </main>
+        <Footer />
+        </>
   )
 }
 

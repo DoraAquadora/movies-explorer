@@ -1,4 +1,4 @@
-.filtercheckbox {
+.filter-checkbox {
 display: flex;
 align-items: center;
 background: #2F2F2F;
@@ -7,18 +7,18 @@ padding-right: 30px;
 border-radius: 0px 9px 9px 0px;
 }
 
-.filtercheckbox__checkbox {
+.filter-checkbox__checkbox {
 position: absolute;
 width: 1px; 
-height: 1px;
+min-height: 1px;
 overflow: hidden;
 }
 
-.filtercheckbox__pseudo {
+.filter-checkbox__pseudo {
 display: inline-block; 
 vertical-align: middle; 
 width: 36px;
-height: 20px;
+min-height: 20px;
 cursor: pointer;
 background-color: #2be080;
 border-radius: 20px;
@@ -26,36 +26,38 @@ transition: opacity 0.3s linear;
 -webkit-tap-highlight-color: transparent;
 position: relative;
 }
-.filtercheckbox__pseudo:hover {
+.filter-checkbox__pseudo:hover {
 opacity: 0.7;
 }
-.filtercheckbox__pseudo::after {
+.filter-checkbox__pseudo::after {
 position: absolute;
 top: 2px;
 right: 2px;
 content: '';
 width: 16px;
-height: 16px;
+min-height: 16px;
 background: #fff;
 border-radius: 100%;
 box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
 }
-.filtercheckbox__checkbox:checked + .filtercheckbox__pseudo {
+
+.filter-checkbox__checkbox:checked + .filter-checkbox__pseudo{
 background-color: #EBEBEB;
 }
-.filtercheckbox__checkbox:checked + .filtercheckbox__pseudo::after{
+.filter-checkbox__checkbox:checked + .filter-checkbox__pseudo::after {
 left: 2px;
-
 }
-.filtercheckbox__text {
+
+.filter-checkbox__text {
+content: 'коротко';
 font-weight: 400;
 font-size: 13px;
 line-height: 18px;
 color: #fff;
-}
+} 
 
 @media (max-width: 840px) {
-.filtercheckbox{
+.filter-checkbox{
 display: flex;
 align-items: center;
 background: #2F2F2F;
@@ -67,7 +69,7 @@ border-radius: 0px 9px 9px 0px;
 }
 
 @media (max-width: 740px) {
-.filtercheckbox {
+.filter-checkbox {
 display: flex;
 align-items: center;
 padding-top: 40px;
@@ -81,13 +83,13 @@ gap: 14px;
 
 @media (max-width: 540px) {
 
-.filtercheckbox{
+.filter-checkbox{
 padding-top: 45px;
 }
 }
 
 @media (max-width: 680px) {
-.filtercheckbox__text {
+.filter-checkbox__text {
 font-size: 11px;
 line-height: 18px;
 }

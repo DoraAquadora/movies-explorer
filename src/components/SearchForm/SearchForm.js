@@ -17,8 +17,6 @@ return (
                     onChange={handleChange}
                 />
                 <button className='searchform__button' type='button'>Найти</button>
-                <div className="searchform__line" />
-
             </div>
             <FilterCheckbox/>
 

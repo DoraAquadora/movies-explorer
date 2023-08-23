@@ -1,13 +1,13 @@
-import Form from '../Form/Form';
+import { Link } from 'react-router-dom';
+import './Register.css';
+import Logo from '../Logo/Logo';
 
 function Register() {
   return (
-    <Form
-      title="Добро пожаловать!"
-      buttonText="Зарегистрироваться"
-      text="Уже зарегистрированы?"
-      routText=" Войти"
-      rout="/signin">
+    <div className="form">
+      <Logo login/>
+      <h2 className="form__title">Добро пожаловать!</h2>
+      <form className="form__container" >
       <label className="form__placeholder">
         Имя
         <input
@@ -42,9 +42,14 @@ function Register() {
         minLength="2"
         maxLength="40"
         required />
-        <span className="form__input-error">Что-то пошло не так...</span>
       </label>
-    </Form>
+      <button type='submit' className="form__button" > Зарегистрироваться </button>
+      </form>
+      <p className="form__text">
+      Уже зарегистрированы?
+        <Link className="form__link" to='/signin'>Войти</Link>
+      </p>
+    </div>
   );
 }
 

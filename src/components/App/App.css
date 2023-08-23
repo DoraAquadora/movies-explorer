@@ -1,10 +1,18 @@
 .app {
-    background-color: #202020;
+/* min-height: 100vh;
+background-color: #202020;
+margin: 0 auto;
+font-family: 'Inter', Arial, sans-serif;
+max-width: 1280px;
+min-width: 320px;
+width: 100%; */
+background-color: #202020;
+    color: #fff;
     min-height: 100vh;
-    font-family: 'Inter', Arial, sans-serif;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
-.app__content {
+/* .app__content {
   background-color: #202020;
   max-width: 1280px;
   margin: 0 auto;
@@ -13,9 +21,8 @@
   min-width: 320px;
   width: 100%;
   margin: auto;
-}
+} */
 
 body {
-  margin: 0;
-
+margin: 0;
 }

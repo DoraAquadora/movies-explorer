@@ -59,13 +59,13 @@
 }
 
 .card__button_active {
-  background: url('../../images/like-acrive.png') 50% no-repeat;
+  background: url('../../images/like-acrive.svg') 50% no-repeat;
 }
 
 .card__button-delete {
   -webkit-tap-highlight-color: transparent;
   all: unset;
-  background: url('../../images/delete.png') 50% no-repeat;
+  background: url('../../images/delete.svg') 50% no-repeat;
   background-size: contain;
   cursor: pointer;
   min-height: 24px;

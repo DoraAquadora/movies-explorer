@@ -25,7 +25,7 @@ letter-spacing: -1.6px;
 
 .promo__image {
 width: 722px;
-height: 244px;
+min-height: 244px;
 align-self: end;
 }
 
@@ -37,7 +37,7 @@ padding: 300px 44px 70px 44px;
 
 .promo__image {
 width: 680px;
-height: 230px;
+min-height: 230px;
 align-self: center;
 }
 
@@ -58,16 +58,16 @@ align-items: center;
 
 }
 
-@media (max-width: 720px) {
+/* @media (max-width: 720px) {
 .promo__image{
 width: 550px;
 }
 .promo__title{
 width: 552px;
 }
-}
+} */
 
-@media (max-width: 590px)   {
+ @media (max-width: 740px)   { /*590  720 */
 .promo{
 padding-top: 183px;
 padding-right: 10px;

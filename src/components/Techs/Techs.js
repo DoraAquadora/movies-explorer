@@ -1,9 +1,10 @@
 import './Techs.css';
+import MainTitle from '../MainTitle/MainTitle';
 
 function Techs () {
     return (
         <section className='techs'>
-        <h2 className="techs__main-title">Технологии</h2>
+          <MainTitle title='Технологии'/>
             <h2 className="techs__title">7 технологий</h2>
       <p className="techs__subtitle">
         На курсе веб-разработки мы освоили технологии, которые применили в
