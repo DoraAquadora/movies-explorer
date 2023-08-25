@@ -5,24 +5,26 @@ import './login.css';
 import Logo from '../Logo/Logo';
 
 function Login ({ onLogin, isLoggedIn, error, errMsg }) {
-  const { values, handleChange, errors, isValid, setIsValid, resetForm } =
-    useFormAndValidation();
-  const navigate = useNavigate();
+  const { values, handleChange, errors, isValid, setIsValid } =
+  useFormAndValidation()
+ const navigate = useNavigate()
 
-  function handleLogin(e) {
-    e.preventDefault()
-    onLogin(values.email, values.password)
-  };
+ function handleLogin(e) {
+   e.preventDefault()
+  onLogin(values.email, values.password)
+}
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/movies');
+ useEffect(() => {
+   if (isLoggedIn) {
+     navigate('/movies');
     }
-  }, [isLoggedIn]);
+    // eslint-disable-next-line
+ }, [isLoggedIn])
 
-  useEffect(() => {
-    setIsValid(false)
-  }, []);
+ useEffect(() => {
+  setIsValid(false)
+  // eslint-disable-next-line
+ }, [])
 
   return (
     <div className="form">

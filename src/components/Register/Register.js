@@ -1,26 +1,28 @@
-import { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useFormAndValidation } from '../../hooks/useFormAndValidation'
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import './Register.css';
 import Logo from '../Logo/Logo';
 
-function Register({ onRegister, isLoggedIn, }) {
-  const { values, handleChange,  setIsValid } =
-    useFormAndValidation();
-  const navigate = useNavigate();
+function Register({ onRegister, isLoggedIn, error, errMsg }) {
+  const { values, handleChange, errors, isValid, setIsValid } =
+    useFormAndValidation()
+  const navigate = useNavigate()
 
   function handleRegister(e) {
     e.preventDefault()
     onRegister(values.name, values.email, values.password)
-  };
+  }
 
   useEffect(() => {
     isLoggedIn && navigate('/movies')
-  }, [isLoggedIn]);
+    // eslint-disable-next-line
+  }, [isLoggedIn])
 
   useEffect(() => {
     setIsValid(false)
-  }, []);
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <div className="form">
@@ -41,6 +43,13 @@ function Register({ onRegister, isLoggedIn, }) {
           onChange={handleChange}
           required
         />
+                    <span
+      className={`email-input-error  ${
+        isValid ? '' : 'input__error_visible'
+      }`}
+    >
+      {errors.name}
+    </span>
       </label>
       <label className="form__placeholder" htmlFor="email-input">
         E-mail
@@ -53,6 +62,13 @@ function Register({ onRegister, isLoggedIn, }) {
         value={values.email || ''}
         onChange={handleChange}
         required />
+                            <span
+      className={`email-input-error  ${
+        isValid ? '' : 'input__error_visible'
+      }`}
+    >
+      {errors.email}
+    </span>
       </label>
       <label className="form__placeholder">
         Пароль
@@ -67,8 +83,22 @@ function Register({ onRegister, isLoggedIn, }) {
         value={values.password || ''}
         onChange={handleChange}
         required />
+                            <span
+      className={`email-input-error  ${
+        isValid ? '' : 'input__error_visible'
+      }`}
+    >
+      {errors.password}
+    </span>
       </label>
-      <button type='submit' className="form__button" > Зарегистрироваться </button>
+      {error && <span className="sign__error">{errMsg.errorText}</span>}
+      <button
+          type="submit"
+          className={`form__button ${
+            !isValid ? 'form__button_disabled' : ''
+          }`}
+          disabled={!isValid}
+       > Зарегистрироваться </button>
       </form>
       <p className="form__text">
       Уже зарегистрированы?
