@@ -1,92 +1,26 @@
-import './App.css';
-import { Route, Routes} from 'react-router-dom';
-//import { useState, useEffect } from 'react'
-import Header from '../Header/Header';
+import React from 'react';
 import Main from '../Main/Main';
-import Register from '../Register/Register';
+import { Routes, Route } from 'react-router-dom';
+import NotFoundPage from '../NotFoundPage/NotFound';
+import './App.css';
+import Registration from '../Registration/Registration';
 import Login from '../Login/Login';
-import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
+import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
-import NotFound from '../NotFound/NotFound';
 
-function App (){
+export default function App() {
   return (
-    <div className='app' >
-        <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Header
-                loggedOut
-              />
-              <Main />
-            </>
-          }
-        />
-        <Route
-        path='/signup'
-
-        element={
-          <>
-          <Register/>
-          </>
-        }
-        />
-        <Route 
-        path='/signin'
-        element={
-          <>
-          <Login/>
-          </>
-        }
-        />
-        <Route
-        path='/movies'
-        element={
-          <>
-            <Header
-          loggedIn
-        />
-          <Movies/>
-          </>
-        }
-        />
-        <Route
-        path='/profile'
-        element={
-          <>
-          <Header
-          loggedIn
-        />
-          <Profile/>
-          </>
-        }
-        />
-
-        <Route
-        path='/saved-movies'
-        element={
-          <>
-          <Header
-          loggedIn
-        />
-          <SavedMovies/>
-          </>
-        }
-        />
-        <Route path='*'
-        element={
-          <NotFound/>
-          
-        }
-        />
-        
-        </Routes>
+    <div className='app'>
+      <Routes>
+        <Route exact path='/' element={<Main />} />
+        <Route path='*' element={<NotFoundPage />} />
+        <Route path='/signup' element={<Registration />} />
+        <Route path='/signin' element={<Login />} />
+        <Route path='/movies' element={<Movies />} />
+        <Route path='/saved-movies' element={<SavedMovies />} />
+        <Route path='/profile' element={<Profile />} />
+      </Routes>
     </div>
-
   );
 }
-
-export default App;

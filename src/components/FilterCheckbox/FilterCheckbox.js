@@ -1,6 +1,6 @@
 import './FilterCheckbox.css'
 
-function FilterCheckbox () {
+function FilterCheckbox ({ checked, onChange }) {
   return (
     <div className="filter-checkbox">
       <label>
@@ -9,6 +9,8 @@ function FilterCheckbox () {
           className="filter-checkbox__checkbox"
           type="checkbox"
           name="checkbox"
+          checked={checked}
+          onChange={onChange}
         />
         <span className="filter-checkbox__pseudo"></span>
       </label>
