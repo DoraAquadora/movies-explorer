@@ -266,7 +266,7 @@ function App() {
           <Navigation
             active={menuActive}
             setActive={setMenuActive}
-            items={menuItems}
+
           />
           {pathname === '/' ||
           pathname === '/movies' ||
