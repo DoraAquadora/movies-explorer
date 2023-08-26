@@ -17,7 +17,6 @@ import Register from '../Register/Register'
 import Login from '../Login/Login'
 import Page404 from '../NotFound/NotFound'
 import Navigation from '../Navigation/Navigation'
-// import iconPath from '../../images/profile.svg'
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute'
 import Preloader from '../Preloader/Preloader'
 import MainApi from '../../utils/MainApi'
@@ -28,7 +27,7 @@ import './App.css'
 function App() {
 
   const [menuActive, setMenuActive] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)//false
   const [currentUser, setCurrentUser] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [savedMovies, setSavedMovies] = useState([])
@@ -170,10 +169,7 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    if (menuActive) document.body.style.overflow = 'hidden'
-    else document.body.style.overflow = 'visible'
-  }, [menuActive])
+
 
   useEffect(() => {
     isLoggedIn &&

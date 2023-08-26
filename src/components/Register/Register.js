@@ -28,7 +28,7 @@ function Register({ onRegister, isLoggedIn, error, errMsg }) {
     <div className="form">
       <Logo login/>
       <h2 className="form__title">Добро пожаловать!</h2>
-      <form className="form__container" noValidate onSubmit={handleRegister} >
+      <form className="form__container" noValidate onSubmit={handleRegister}>
       <label className="form__placeholder">
         Имя
         <input
