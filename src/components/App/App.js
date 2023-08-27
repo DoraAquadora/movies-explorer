@@ -27,7 +27,7 @@ import './App.css';
 
 function App() {
   const [menuActive, setMenuActive] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //false
   const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);

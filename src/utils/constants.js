@@ -1,8 +1,4 @@
-// export const EMAIL_PATTERN =
-//   /[^ "<>#%]+[^ "<>#%]+\@[^ "<>#%]+[^ "<>#%]+\.[^ "<>#%]+[^ "<>#%]+/;
-  
-
-export const APIFILM_URL = ' https://api.nomoreparties.co/beatfilm-movies';
+export const APIFILM_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 export const APIIMGIMG_URL = 'https://api.nomoreparties.co';
 export const BASE_URL = 'https://api.doramovies.nomoredomains.sbs';
 //export const BASE_URL = 'http://localhost:3000';

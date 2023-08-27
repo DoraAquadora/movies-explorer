@@ -84,8 +84,8 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
     } else {
       setNotFound(false)
     }
-    setSearchedMovies(searched)
-    localStorage.setItem('searchedMovies', JSON.stringify(searched))
+    // setSearchedMovies(searched)
+    //  localStorage.setItem('searchedMovies', JSON.stringify(searched))
   }
 
   useEffect(() => {
