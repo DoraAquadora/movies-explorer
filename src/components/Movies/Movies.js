@@ -7,12 +7,12 @@ import MainApi from '../../utils/MainApi';
 import { BASE_URL, TIMING } from '../../utils/constants';
 
 const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
-  const [allMovies, setAllMovies] = useState([])
-  const [searchedMovies, setSearchedMovies] = useState([])
-  const [isEmptyInput, setIsEmptyInput] = useState(false)
-  const [notFound, setNotFound] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState(false)
+  const [allMovies, setAllMovies] = useState([]);
+  const [searchedMovies, setSearchedMovies] = useState([]);
+  const [isEmptyInput, setIsEmptyInput] = useState(false);
+  const [notFound, setNotFound] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const mainApi = new MainApi({
     url: BASE_URL,

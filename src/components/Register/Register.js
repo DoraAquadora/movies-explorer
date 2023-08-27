@@ -5,7 +5,7 @@ import Logo from '../Logo/Logo';
 import './Register.css';
 
 const Register = ({ onRegister, isLoggedIn, error, errMsg }) => {
-  const { values, handleChange, errors, isValid, setIsValid, resetForm } =
+  const { values, handleChange, errors, isValid, setIsValid } =
     useFormAndValidation()
   const navigate = useNavigate()
 

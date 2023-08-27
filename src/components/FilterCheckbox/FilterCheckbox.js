@@ -3,7 +3,7 @@ import './FilterCheckbox.css';
 function FilterCheckbox ({ checked, onChange }) {
   return (
     <div className="filter-checkbox">
-      <label>
+      <label htmlFor="check-box">
         <input
           id="checkbox"
           className="filter-checkbox__checkbox"
