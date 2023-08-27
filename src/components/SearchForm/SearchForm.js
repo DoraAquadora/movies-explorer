@@ -33,7 +33,7 @@ const SearchForm = ({ onSearch, query, checkbox }) => {
     <section className="searchform">
       <form className="searchform__wrap" onSubmit={handleSubmit} noValidate>
         <div className="searchform__container">
-            <label className='searchform__img' htmlFor="sfilms">
+            <label className='searchform__img' htmlFor="films">
                     <img src={searchimg} alt='src' />
                 </label>
             <input

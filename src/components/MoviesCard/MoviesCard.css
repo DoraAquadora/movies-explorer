@@ -1,5 +1,5 @@
 .card {
-  max-width: 270px;
+  width: 270px;
   max-height: 218px;
 }
 .card__image{
@@ -85,7 +85,7 @@
 
 @media (max-width: 1279px) {
   .card {
-    max-width: 339px;
+    width: 339px;
     max-height: 257px;
   }
 }
@@ -106,7 +106,7 @@
   }
   @media (max-width: 767px) {
     .card {
-      max-width: 300px;
+      width: 300px;
       max-height: 235px;
     }
   }
