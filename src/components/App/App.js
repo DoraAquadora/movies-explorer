@@ -1,42 +1,42 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import {
   Route,
   Routes,
   useLocation,
   Navigate,
   useNavigate,
-} from 'react-router-dom'
-import { CurrentUserContext } from '../../contexts/CurrentUserContext'
-import Header from '../Header/Header'
-import Footer from '../Footer/Footer'
-import Main from '../Main/Main'
-import Movies from '../Movies/Movies'
-import SavedMovies from '../SavedMovies/SavedMovies'
-import Profile from '../Profile/Profile'
-import Register from '../Register/Register'
-import Login from '../Login/Login'
-import Page404 from '../Page404/Page404'
-import Navigation from '../Navigation/Navigation'
-import iconPath from '../../images/liticon.svg'
-import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute'
-import Preloader from '../Preloader/Preloader'
-import MainApi from '../../utils/MainApi'
-import { BASE_URL } from '../../utils/constants'
-import { auth } from '../../utils/auth'
-import './App.css'
+} from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import Main from '../Main/Main';
+import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
+import Page404 from '../Page404/Page404';
+import Navigation from '../Navigation/Navigation';
+import iconPath from '../../images/liticon.svg';
+import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
+import Preloader from '../Preloader/Preloader';
+import MainApi from '../../utils/MainApi';
+import { BASE_URL } from '../../utils/constants';
+import { auth } from '../../utils/auth';
+import './App.css';
 
 function App() {
-  const [menuActive, setMenuActive] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [currentUser, setCurrentUser] = useState({})
-  const [isLoading, setIsLoading] = useState(false)
-  const [savedMovies, setSavedMovies] = useState([])
-  const [error, setError] = useState(false)
-  const [errMsg, setErrMsg] = useState('')
-  const [msg, setMsg] = useState(false)
-  const location = useLocation()
-  const { pathname } = useLocation()
-  const navigate = useNavigate()
+  const [menuActive, setMenuActive] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [savedMovies, setSavedMovies] = useState([]);
+  const [error, setError] = useState(false);
+  const [errMsg, setErrMsg] = useState('');
+  const [msg, setMsg] = useState(false);
+  const location = useLocation();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const menuItems = [
     { value: 'Главная', href: '/' },

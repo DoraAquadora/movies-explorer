@@ -1,5 +1,4 @@
 import { Link, NavLink } from 'react-router-dom';
-import Navigation from "../Navigation/Navigation";
 import Logo from '../Logo/Logo';
 import Menu from '../../images/menu.svg';
 import ProfilePath from '../../images/account.svg';

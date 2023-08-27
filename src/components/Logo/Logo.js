@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
-import logoPath from '../../images/logo.svg'
-import './Logo.css'
+import { Link } from 'react-router-dom';
+import logoPath from '../../images/logo.svg';
+import './Logo.css';
 
 function Logo(login) {
   return (
@@ -16,4 +16,4 @@ function Logo(login) {
   )
 }
 
-export default Logo
+export default Logo;

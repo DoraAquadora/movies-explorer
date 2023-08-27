@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useFormAndValidation } from '../../hooks/useFormAndValidation'
-import Logo from '../Logo/Logo'
-import './Login.css'
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import Logo from '../Logo/Logo';
+import './Login.css';
 
 const Login = ({ onLogin, isLoggedIn, error, errMsg }) => {
   const { values, handleChange, errors, isValid, setIsValid } =
@@ -96,4 +96,4 @@ const Login = ({ onLogin, isLoggedIn, error, errMsg }) => {
   )
 }
 
-export default Login
+export default Login;

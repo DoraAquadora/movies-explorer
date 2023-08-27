@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { NOMOREPARTIES_IMG_URL } from '../../utils/constants';
+import { APIIMGIMG_URL } from '../../utils/constants';
 import './MoviesCard.css';
 
 const MoviesCard = ({ savedMovies, onLikeMovie, onDeleteMovie, movie }) => {
@@ -25,7 +25,7 @@ const MoviesCard = ({ savedMovies, onLikeMovie, onDeleteMovie, movie }) => {
         {pathname === '/movies' ? (
           <img
             className="card__image"
-            src={`${NOMOREPARTIES_IMG_URL}${movie.image.url}`}
+            src={`${APIIMGIMG_URL}${movie.image.url}`}
             alt={`фотокарточка фильма ${movie.nameRU}`}
           />
         ) : (

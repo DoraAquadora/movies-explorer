@@ -3,13 +3,13 @@ import Button from '../Button/Button';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
-  SCREEN_MIDDLE,
-  SCREEN_LARGE,
-  MOVIES_SMALL,
-  MOVIES_SMALL_TO_ADD,
+  MIDDLE_SC,
+  DESK_SC,
+  MOVIES_MOBILE,
+  MOVIES_MOBILE_ADD,
   MOVIES_MIDDLE,
-  MOVIES_LARGE,
-  MOVIES_LARGE_TO_ADD,
+  MOVIES_DESK,
+  MOVIES_DESK_ADD,
 } from '../../utils/constants';
 import './MoviesCardList.css';
 
@@ -21,7 +21,7 @@ const MoviesCardList = ({
   onDeleteMovie,
 }) => {
   const { pathname } = useLocation();
-  const [moviesRendered, setMoviesRendered] = useState(MOVIES_LARGE);
+  const [moviesRendered, setMoviesRendered] = useState(MOVIES_DESK);
   const displayWidth = window.innerWidth;
 
   useEffect(() => {
@@ -30,10 +30,10 @@ const MoviesCardList = ({
       clearTimeout(timeoutOfResize)
       timeoutOfResize = setTimeout(() => {
         let visibleMovies
-        if (displayWidth < SCREEN_MIDDLE) {
-          visibleMovies = MOVIES_SMALL
-        } else if (displayWidth >= SCREEN_LARGE) {
-          visibleMovies = MOVIES_LARGE
+        if (displayWidth < MIDDLE_SC) {
+          visibleMovies = MOVIES_MOBILE
+        } else if (displayWidth >= DESK_SC) {
+          visibleMovies = MOVIES_DESK
         } else {
           visibleMovies = MOVIES_MIDDLE
         }
@@ -49,13 +49,13 @@ const MoviesCardList = ({
   }, [])
 
   const handleMoreBtn = () => {
-    if (displayWidth < SCREEN_LARGE) {
+    if (displayWidth < DESK_SC) {
       setMoviesRendered(
-        (prevMoviesRendered) => prevMoviesRendered + MOVIES_SMALL_TO_ADD
+        (prevMoviesRendered) => prevMoviesRendered + MOVIES_MOBILE_ADD
       )
     } else {
       setMoviesRendered(
-        (prevMoviesRendered) => prevMoviesRendered + MOVIES_LARGE_TO_ADD
+        (prevMoviesRendered) => prevMoviesRendered + MOVIES_DESK_ADD
       )
     }
   }

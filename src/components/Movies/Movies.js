@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
-import SearchForm from '../SearchForm/SearchForm'
-import Preloader from '../Preloader/Preloader'
-import MoviesCardList from '../MoviesCardList/MoviesCardList'
-import { moviesApi } from '../../utils/MoviesApi'
-import MainApi from '../../utils/MainApi'
-import { BASE_URL, SHORT_TIMING } from '../../utils/constants'
+import { useState, useEffect } from 'react';
+import SearchForm from '../SearchForm/SearchForm';
+import Preloader from '../Preloader/Preloader';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import { moviesApi } from '../../utils/MoviesApi';
+import MainApi from '../../utils/MainApi';
+import { BASE_URL, TIMING } from '../../utils/constants';
 
 const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
   const [allMovies, setAllMovies] = useState([])
@@ -65,7 +65,7 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
         .toLowerCase()
         .includes(query.toLowerCase())
       const isSearched = searchedRU || searchedEN
-      const isShortFilm = movie.duration <= SHORT_TIMING
+      const isShortFilm = movie.duration <= TIMING
       if (query && isShort) {
         return isSearched && isShortFilm
       } else if (!query) {

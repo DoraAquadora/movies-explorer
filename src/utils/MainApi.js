@@ -1,4 +1,4 @@
-import { NOMOREPARTIES_IMG_URL } from './constants'
+import { APIIMGIMG_URL } from './constants';
 
 export default class MainApi {
   constructor({ url, headers }) {
@@ -44,9 +44,9 @@ export default class MainApi {
         duration: movie.duration,
         year: movie.year,
         description: movie.description,
-        image: `${NOMOREPARTIES_IMG_URL}${movie.image.url}`,
+        image: `${APIIMGIMG_URL}${movie.image.url}`,
         trailerLink: movie.trailerLink,
-        thumbnail: `${NOMOREPARTIES_IMG_URL}${movie.image.formats.thumbnail.url}`,
+        thumbnail: `${APIIMGIMG_URL}${movie.image.formats.thumbnail.url}`,
         movieId: movie.id,
         nameRU: movie.nameRU,
         nameEN: movie.nameEN,
