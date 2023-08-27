@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import Menu from '../../images/menu.svg';
 import ProfilePath from '../../images/account.svg';
-import './Header.css';
+import './header.css';
 
 function Header({ isDark, menuActive, setMenuActive  }) {
   return (
