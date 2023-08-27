@@ -1,17 +1,19 @@
-import { Link } from 'react-router-dom';
-import logo from '../../images/logo.svg';
+import { Link } from 'react-router-dom'
+import logoPath from '../../images/logo.svg'
 import './Logo.css'
 
-function Logo({login}) {
+function Logo(login) {
   return (
-    <Link to="/" className="header-logo">
-    <img src={logo} alt="логотип"
-            className={`header-logo__login ${
-              login ? 'header-logo__login_type_active' : ''
-            }`}
-          />
-  </Link>
+    <Link className="header-logo" to="/">
+      <img
+        src={logoPath}
+        alt="Логотип в виде полусмайлика"
+        className={`header-logo__login ${
+          login ? 'header-logo__login_type_active' : ''
+        }`}
+      />
+    </Link>
   )
 }
 
-export default Logo;
+export default Logo

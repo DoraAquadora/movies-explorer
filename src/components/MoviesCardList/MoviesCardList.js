@@ -1,6 +1,7 @@
-import MoviesCard from '../MoviesCard/MoviesCard'
-import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import MoviesCard from '../MoviesCard/MoviesCard';
+import Button from '../Button/Button';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   SCREEN_MIDDLE,
   SCREEN_LARGE,
@@ -9,10 +10,8 @@ import {
   MOVIES_MIDDLE,
   MOVIES_LARGE,
   MOVIES_LARGE_TO_ADD,
-} from '../../utils/constants'
-import './MovieCardList.css'
-import Button from '../Button/Button'
-
+} from '../../utils/constants';
+import './MoviesCardList.css';
 
 const MoviesCardList = ({
   movies,
@@ -21,9 +20,9 @@ const MoviesCardList = ({
   onLikeMovie,
   onDeleteMovie,
 }) => {
-  const { pathname } = useLocation()
-  const [moviesRendered, setMoviesRendered] = useState(MOVIES_LARGE)
-  const displayWidth = window.innerWidth
+  const { pathname } = useLocation();
+  const [moviesRendered, setMoviesRendered] = useState(MOVIES_LARGE);
+  const displayWidth = window.innerWidth;
 
   useEffect(() => {
     let timeoutOfResize
@@ -47,7 +46,6 @@ const MoviesCardList = ({
       clearTimeout(timeoutOfResize)
       window.removeEventListener('resize', handleResize)
     }
-    // eslint-disable-next-line
   }, [])
 
   const handleMoreBtn = () => {
@@ -65,8 +63,8 @@ const MoviesCardList = ({
   const moviesToRender = movies.slice(0, moviesRendered)
 
   return (
-    <section className="movie-cardlist" aria-label="список фильмов">
-      <ul className="movie__list">
+    <section className="cards" aria-label="список фильмов">
+      <ul className="cards__list">
         {pathname !== '/saved-movies'
           ? moviesToRender.map((movie) => (
               <MoviesCard
@@ -85,10 +83,10 @@ const MoviesCardList = ({
             ))}
       </ul>
       {isMoreBtn && movies.length > moviesRendered && (
-       <Button onClick={handleMoreBtn} />
+        <Button onClick={handleMoreBtn} />
       )}
     </section>
   )
 }
 
-export default MoviesCardList
+export default MoviesCardList;

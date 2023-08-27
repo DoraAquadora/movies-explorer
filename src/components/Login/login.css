@@ -30,13 +30,13 @@
   .form__container {
   display: flex;
   flex-direction: column;
+  position: relative;
   min-height: 380px;
   width: 100%;
   }
   
   .form__button {
   margin-top: auto;
-  /* width: 396px; */
   height: 45px;
   border: none;
   background-color: #4285F4;
@@ -55,12 +55,10 @@
   }
   
   .form__button_inactive {
-  pointer-events: none;
-  background: #ffffff;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  color: #000000;
-  opacity: 0.2;
+    background-color: #f8f8f8;
+    margin-top: auto;
+    color: #c2c2c2;
+    cursor: default;
   }
   
   .form__button_loading {
@@ -106,7 +104,7 @@
   }
   
   .form__input {
-  margin: 0;
+  margin: 0 0 20px 0;
   padding: 5px 0 10px 0;
   width: 100%;
   font-style: normal;
@@ -127,7 +125,7 @@
   border-bottom: 1px solid #000000;
   }
   
-  .email-input-error {
+  .text-input-error {
   margin: 0;
   padding: 0;
   font-style: normal;
@@ -135,9 +133,6 @@
   font-size: 10px;
   line-height: 12px;
   color: #ff4062;
-  position: absolute;
-  top: 50px;
-  left: 0;
   }
   
   .input__error_visible {
@@ -150,7 +145,7 @@
     cursor: default;
   }
 
-  .sign__error{
+  .form__error{
     position: absolute;
     font-weight: 500;
     font-size: 14px;

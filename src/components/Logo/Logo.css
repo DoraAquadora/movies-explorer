@@ -5,7 +5,7 @@
 .header-logo__login{
 width: 38px;
 min-height: 38px;
-padding-top: 18px;
+padding-top: 0px;
 }
 
 .header-logo__login:hover{
@@ -16,5 +16,5 @@ opacity: 0.6;
 .header-logo__login_type_active{
 width: 38px;
 min-height: 38px;
-padding-top: 0px;
+padding-top: 18px;
 }

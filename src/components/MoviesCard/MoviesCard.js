@@ -1,6 +1,6 @@
-import { useLocation } from 'react-router-dom'
-import { NOMOREPARTIES_IMG_URL } from '../../utils/constants'
-import './MoviesCard.css'
+import { useLocation } from 'react-router-dom';
+import { NOMOREPARTIES_IMG_URL } from '../../utils/constants';
+import './MoviesCard.css';
 
 const MoviesCard = ({ savedMovies, onLikeMovie, onDeleteMovie, movie }) => {
   const { pathname } = useLocation()
@@ -21,8 +21,7 @@ const MoviesCard = ({ savedMovies, onLikeMovie, onDeleteMovie, movie }) => {
 
   return (
     <li className="card">
-      {/* eslint-disable-next-line */}
-<a className="card__image" href={movie.trailerLink} target="_blank">
+      <a className="card__away-link" href={movie.trailerLink} target="_blank">
         {pathname === '/movies' ? (
           <img
             className="card__image"
@@ -37,34 +36,31 @@ const MoviesCard = ({ savedMovies, onLikeMovie, onDeleteMovie, movie }) => {
           />
         )}
       </a>
-
       <div className="card__container">
-      <div className="card__container-title">
+        <div className="card__container-title">
           <h2 className="card__title">{movie.nameRU}</h2>
           {pathname === '/movies' ? (
             <button
               type="button"
-              aria-label="лайк"
+              aria-label="Кнопка лайк карточки"
               onClick={() => onLikeMovie(movie, isLiked, savedMovie?._id)}
               className={`card__button ${isLiked ? 'card__button_active' : ''}`}
             />
-
           ) : (
             <button
               type="button"
-              aria-label="дизлайк"
+              aria-label="Кнопка дизлайк карточки"
               className="card__button-delete"
               onClick={() => onDeleteMovie(movie._id)}
             />
           )}
         </div>
-        <span className="card__time">
+        <small className="card__time">
           {changeTimeLayout(movie.duration)}
-      </span>
-        </div>
-
+        </small>
+      </div>
     </li>
   )
 }
 
-export default MoviesCard
+export default MoviesCard;

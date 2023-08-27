@@ -6,7 +6,7 @@ import {
   Navigate,
   useNavigate,
 } from 'react-router-dom'
-import { CurrentUserContext } from '../contexts/CurrentUserContext'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import Main from '../Main/Main'
@@ -15,8 +15,9 @@ import SavedMovies from '../SavedMovies/SavedMovies'
 import Profile from '../Profile/Profile'
 import Register from '../Register/Register'
 import Login from '../Login/Login'
-import Page404 from '../NotFound/NotFound'
+import Page404 from '../Page404/Page404'
 import Navigation from '../Navigation/Navigation'
+import iconPath from '../../images/liticon.svg'
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute'
 import Preloader from '../Preloader/Preloader'
 import MainApi from '../../utils/MainApi'
@@ -25,9 +26,8 @@ import { auth } from '../../utils/auth'
 import './App.css'
 
 function App() {
-
   const [menuActive, setMenuActive] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)//false
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [savedMovies, setSavedMovies] = useState([])
@@ -37,6 +37,13 @@ function App() {
   const location = useLocation()
   const { pathname } = useLocation()
   const navigate = useNavigate()
+
+  const menuItems = [
+    { value: 'Главная', href: '/' },
+    { value: 'Фильмы', href: '/movies' },
+    { value: 'Сохранённые фильмы', href: '/saved-movies' },
+    { value: 'Аккаунт', href: '/profile', icon: iconPath},
+  ]
 
   const mainApi = new MainApi({
     url: BASE_URL,
@@ -55,7 +62,6 @@ function App() {
 
   useEffect(() => {
     handleCheckToken()
-    /* eslint-disable-next-line */
   }, [])
 
   const handleCheckToken = () => {
@@ -89,7 +95,6 @@ function App() {
           setCurrentUser(user)
         })
         .catch((error) => console.log(error))
-        /* eslint-disable-next-line */
   }, [isLoggedIn])
 
   const handleLogin = (email, password) => {
@@ -169,7 +174,10 @@ function App() {
     }
   }
 
-
+   useEffect(() => {
+     if (menuActive) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = 'visible'
+   }, [menuActive])
 
   useEffect(() => {
     isLoggedIn &&
@@ -178,7 +186,6 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={{ currentUser }}>
-      
       {isLoading ? (
         <Preloader />
       ) : (
@@ -188,7 +195,7 @@ function App() {
           pathname === '/saved-movies' ||
           pathname === '/profile' ? (
             <Header
-            loggedIn={isLoggedIn}
+              isDark={isLoggedIn}
               menuActive={menuActive}
               setMenuActive={setMenuActive}
             />
@@ -262,7 +269,7 @@ function App() {
           <Navigation
             active={menuActive}
             setActive={setMenuActive}
-
+            items={menuItems}
           />
           {pathname === '/' ||
           pathname === '/movies' ||
@@ -273,9 +280,8 @@ function App() {
           )}
         </div>
       )}
-
     </CurrentUserContext.Provider>
   )
 }
 
-export default App;
+export default App

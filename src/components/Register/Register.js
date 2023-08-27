@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
-import './Register.css';
 import Logo from '../Logo/Logo';
+import './Register.css';
 
-function Register({ onRegister, isLoggedIn, error, errMsg }) {
-  const { values, handleChange, errors, isValid, setIsValid } =
+const Register = ({ onRegister, isLoggedIn, error, errMsg }) => {
+  const { values, handleChange, errors, isValid, setIsValid, resetForm } =
     useFormAndValidation()
   const navigate = useNavigate()
 
@@ -16,96 +16,104 @@ function Register({ onRegister, isLoggedIn, error, errMsg }) {
 
   useEffect(() => {
     isLoggedIn && navigate('/movies')
-    // eslint-disable-next-line
   }, [isLoggedIn])
 
   useEffect(() => {
     setIsValid(false)
-    // eslint-disable-next-line
   }, [])
 
   return (
-    <div className="form">
-      <Logo login/>
-      <h2 className="form__title">Добро пожаловать!</h2>
-      <form className="form__container" noValidate onSubmit={handleRegister}>
-      <label className="form__placeholder">
-        Имя
-        <input
-          name="name"
-          placeholder='имя'
-          className="form__input"
-          id="name"
-          type="text"
-          minLength="2"
-          maxLength="40"
-          value={values.name || ''}
-          onChange={handleChange}
-          required
-        />
-                    <span
-      className={`email-input-error  ${
-        isValid ? '' : 'input__error_visible'
-      }`}
-    >
-      {errors.name}
-    </span>
-      </label>
-      <label className="form__placeholder" htmlFor="email-input">
-        E-mail
-        <input 
-        name="email"
-        placeholder='email'
-        className="form__input" 
-        id="email" 
-        type="email"
-        value={values.email || ''}
-        onChange={handleChange}
-        required />
-                            <span
-      className={`email-input-error  ${
-        isValid ? '' : 'input__error_visible'
-      }`}
-    >
-      {errors.email}
-    </span>
-      </label>
-      <label className="form__placeholder">
-        Пароль
-        <input 
-        name="password"
-        placeholder='Пароль'
-        className="form__input" 
-        id="password" 
-        type="password"
-        minLength="2"
-        maxLength="40"
-        value={values.password || ''}
-        onChange={handleChange}
-        required />
-                            <span
-      className={`email-input-error  ${
-        isValid ? '' : 'input__error_visible'
-      }`}
-    >
-      {errors.password}
-    </span>
-      </label>
-      {error && <span className="sign__error">{errMsg.errorText}</span>}
-      <button
-          type="submit"
-          className={`form__button ${
-            !isValid ? 'form__button_disabled' : ''
-          }`}
-          disabled={!isValid}
-       > Зарегистрироваться </button>
-      </form>
-      <p className="form__text">
-      Уже зарегистрированы?
-        <Link className="form__link" to='/signin'>Войти</Link>
-      </p>
-    </div>
-  );
+    <main>
+      <section className="form">
+            <Logo login />
+            <h1 className="form__title">Добро пожаловать!</h1>
+            <form className="form__container" noValidate onSubmit={handleRegister}>
+              <div className="form__input-fields">
+                <div className="form__input-field">
+                  <label className="form__placeholder" htmlFor="name-input">
+                    Имя
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    className="form__input form__input-field_name"
+                    id="name-input"
+                    value={values.name || ''}
+                    onChange={handleChange}
+                  />
+                  <span
+                    className={`text-input-error input__error input__error-field ${
+                      isValid ? '' : 'input__error_visible'
+                    }`}
+                  >
+                    {errors.name}
+                  </span>
+                </div>
+                <div className="form__input-field ">
+                  <label className="form__placeholder" htmlFor="email-input">
+                    E-mail
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    className="form__input form__input_field_email"
+                    id="email-input"
+                    value={values.email || ''}
+                    onChange={handleChange}
+                  />
+                  <span
+                    className={`text-input-error input__error input__error-field ${
+                      isValid ? '' : 'input__error_visible'
+                    }`}
+                  >
+                    {errors.email}
+                  </span>
+                </div>
+                <div className="form__input-field">
+                  <label className="form__placeholder" htmlFor="password-input">
+                    Пароль
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    required
+                    className="form__input form__input_field_password"
+                    id="password-input"
+                    value={values.password || ''}
+                    onChange={handleChange}
+                  />
+                  <span
+                    className={`text-input-error input__error input__error-field ${
+                      isValid ? '' : 'input__error_visible'
+                    }`}
+                  >
+                    {errors.password}
+                  </span>
+                </div>
+                {error && <span className="form__error">{errMsg.errorText}</span>}
+              </div>
+              <button
+                type="submit"
+                className={`form__button  ${
+                  !isValid ? 'form__button_inactive' : ''
+                }`}
+                disabled={!isValid}
+              >
+                Зарегистрироваться
+              </button>
+            </form>
+          <p className="form__text">
+            Уже зарегистрированы?{' '}
+            <Link to="/signin" className="form__link">
+              Войти
+            </Link>
+          </p>
+
+      </section>
+    </main>
+  )
 }
 
 export default Register;

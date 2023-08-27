@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import SearchForm from '../SearchForm/SearchForm'
 import Preloader from '../Preloader/Preloader'
-import MoviesCardList from '../MovieCardList/MovieCardList'
+import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import { moviesApi } from '../../utils/MoviesApi'
 import MainApi from '../../utils/MainApi'
 import { BASE_URL, SHORT_TIMING } from '../../utils/constants'
@@ -26,7 +26,6 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
   useEffect(() => {
     getAllMovies()
     getSavedMovies()
-    // eslint-disable-next-line
   }, [])
 
   async function getAllMovies() {

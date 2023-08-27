@@ -1,76 +1,139 @@
-import './Profile.css';
-import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useContext, useState, useEffect } from 'react'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import { useFormAndValidation } from '../../hooks/useFormAndValidation'
+import './Profile.css'
 
-function Profile() {
-  const [handleChangeInputs, setHandleChangeInputs] = useState(false);
+const Profile = ({ onSignOut, onChangeUserInfo, msg, setMsg, error }) => {
+  const { values, setValues, handleChange, errors, isValid, setIsValid } =
+    useFormAndValidation()
+  const { currentUser } = useContext(CurrentUserContext)
+  const [handleChangeInputs, setHandleChangeInputs] = useState(false)
 
-  function handleChange(e) {
+  useEffect(() => {
+    if (currentUser) {
+      setValues(currentUser)
+      setIsValid(true)
+    }
+  }, [currentUser, setIsValid, setValues])
+
+  const handleSubmit = (e) => {
     e.preventDefault()
+    const { name, email } = values
+    onChangeUserInfo({ name, email })
+    setHandleChangeInputs(false)
   }
 
   return (
     <main>
-    <section className="profile">
-      <h1 className="profile__title">Привет, Виталий!</h1>
-      <form className="profile__form" noValidate>
-        <label className="profile__placeholder" htmlFor="name-input">
-          Имя
-          <input
-            name="name"
-            placeholder='Имя'
-            className="profile__input"
-            id="name-input"
-            type="text"
-            minLength="2"
-            maxLength="40"
-            onClick={() => setHandleChangeInputs(!handleChangeInputs)}
-            onSubmit={handleChange}
-            required
-          />
-        </label>
-
-        <div className="profile__border"></div>
-        <label className="profile__placeholder">
-          E-mail
-          <input 
-          name="email" 
-          type='email' 
-          className="profile__input" 
-          id="email-input"
-          placeholder='Почта'
-          required />
-        </label>
-        {handleChangeInputs ? (
-          <>
-          <span className='profile__submit-error'>При обновлении профиля произошла ошибка.</span>
-          <button
-          type="submit"
-          className="profile__submit "
-          onClick={() => setHandleChangeInputs(!handleChangeInputs)}
-          onSubmit={handleChange}
-
-        >
-          Сохранить
-        </button>
-        </>
-        ) : (
-          <>
-          <button 
-          type="button" 
-          className="profile__button-save" 
-           >
-          Редактировать
-        </button>
-        <button className="profile__logout" type='button'>Выйти из аккаунта</button>
-        </>
-        )
-        }
-
-      </form>
-    </section>
+      <section className="profile">
+        <h1 className="profile__title">Привет, {currentUser.name}!</h1>
+        <div className="profile__wrap">
+          <div className="profile__form-wrap">
+            <form className="profile__form" noValidate onSubmit={handleSubmit}>
+              <div className="profile__input-field">
+                <label className="profile__label" htmlFor="name-input">
+                  Имя
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  className="profile__input profile__input_field_name"
+                  id="name-input"
+                  value={values.name || ''}
+                  onChange={handleChange}
+                  disabled={!handleChangeInputs}
+                />
+                <span
+                  className={`name-input-error input__error input__error-field input__error-profile ${
+                    isValid ? '' : 'input__error_visible'
+                  }`}
+                >
+                  {errors.name}
+                </span>
+              </div>
+              <div className="profile__separator"></div>
+              <div className="profile__input-field">
+                <label className="profile__label" htmlFor="email-input">
+                  E-mail
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="E-mail"
+                  required
+                  className="profile__input profile__input_field_email"
+                  id="email-input"
+                  value={values.email || ''}
+                  onChange={handleChange}
+                  disabled={!handleChangeInputs}
+                />
+                <span
+                  className={`name-input-error input__error input__error-field input__error-profile ${
+                    isValid ? '' : 'input__error_visible'
+                  }`}
+                >
+                  {errors.email}
+                </span>
+              </div>
+              <div className="profile__buttons-wrap">
+                {error && (
+                  <span className="profile__submit-success">
+                    Ошибка редактирования!
+                  </span>
+                )}
+                {msg && (
+                  <span className="profile__submit-success">
+                    Профиль отредактирован!
+                  </span>
+                )}
+                {handleChangeInputs ? (
+                  <button
+                    type="submit"
+                    className={`profile__submit ${
+                      !isValid ||
+                      (values.name === currentUser.name &&
+                        values.email === currentUser.email)
+                        ? 'profile__submit_disabled'
+                        : ''
+                    }`}
+                    disabled={
+                      !isValid ||
+                      (values.name === currentUser.name &&
+                        values.email === currentUser.email)
+                    }
+                  >
+                    Сохранить
+                  </button>
+                ) : (
+                  <>
+                    <button
+                      type="button"
+                      className="profile__submit-button"
+                      onClick={() => {
+                        setHandleChangeInputs(!handleChangeInputs)
+                        setMsg(false)
+                      }}
+                    >
+                      Редактировать
+                    </button>
+                    <Link
+                      className="profile__signout"
+                      onClick={onSignOut}
+                      to="/"
+                    >
+                      Выйти из аккаунта
+                    </Link>
+                  </>
+                )}
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
-  );
+  )
 }
 
-export default Profile;
-
+export default Profile
