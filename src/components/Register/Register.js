@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
-import {EMAIL_PATTERN} from '../../utils/constants';
+import {EMAIL_REGEX} from '../../hooks/useFormAndValidation';
 import Logo from '../Logo/Logo';
 import './Register.css';
 
@@ -63,8 +63,8 @@ const Register = ({ onRegister, isLoggedIn, error, errMsg }) => {
                     id="email-input"
                     value={values.email || ''}
                     onChange={handleChange}
-                    pattern={EMAIL_PATTERN}
-                  />
+                    pattern={EMAIL_REGEX}
+                    />
                   <span
                     className={`text-input-error input__error input__error-field ${
                       isValid ? '' : 'input__error_visible'

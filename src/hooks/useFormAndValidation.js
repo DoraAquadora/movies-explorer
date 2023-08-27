@@ -31,3 +31,6 @@ export function useFormAndValidation() {
     setIsValid,
   }
 }
+
+const EMAIL_REGEX = "[a-zA-Z0-9_.]+@[a-zA-Z0-9_]+\\.[a-z]{2,}";
+export { EMAIL_REGEX };
