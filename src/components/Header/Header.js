@@ -6,7 +6,7 @@ import './Header.css';
 
 function Header({ isDark, menuActive, setMenuActive  }) {
   return (
-    <>
+    <> 
       {!isDark && (
         <header className="header header_type_logged-out">
           <Logo login/>
