@@ -1,0 +1,150 @@
+.techs{
+background-color: #272727;
+padding: 100px 70px;
+
+}
+
+.techs__main-title{
+margin: 0;
+padding: 0;
+padding-bottom: 23px;
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 27px;
+letter-spacing: -0.04em;
+color: #FFF;
+border-bottom: 1px solid #DADADA;
+}
+
+.techs__title {
+color: #FFF;
+text-align: center;
+font-size: 50px;
+font-style: normal;
+font-weight: 400;
+line-height: 58px; 
+letter-spacing: -2px;
+margin: 90px auto 0; 
+}
+
+
+.techs__subtitle {
+color: #FFF;
+text-align: center;
+width: 460px;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; /* 142.857% */
+letter-spacing: -0.56px;
+margin: 26px auto 0;
+}
+
+.techs__list {
+margin-top: 100px;
+padding: 0;
+display: grid;
+grid-template-columns: repeat(auto-fit, 90px);
+gap: 10px;
+justify-content: center;
+list-style: none;
+}
+.techs__item {
+margin: 0;
+padding: 0;
+width: 90px;
+min-height: 60px;
+border-radius: 10px;
+background-color: #303030;
+color:#FFF;
+display: flex;
+justify-content: center;
+align-items: center;
+text-decoration: none;
+}
+
+
+@media (max-width: 830px) {
+.techs{
+padding: 90px 50px;
+}
+
+.techs__title {
+margin: 80px auto 0;
+}
+.techs__subtitle{
+margin: 22px auto;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: -0.48px;
+}
+
+.techs__list {
+margin: 83px 0 0 0;
+grid-template-columns: repeat(auto-fit, 84px);
+}
+
+.techs__item {
+margin: 0 auto;
+width: 84px;
+min-height: 57px;
+font-size: 12px;
+line-height: 15px;
+}
+}
+
+@media  (max-width: 540px) {
+.Techs {
+padding: 70px 18px;
+}
+
+.techs__title {
+margin: 60px auto 0;
+font-size: 30px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -1.2px;
+}
+
+.techs__main-title {
+padding-bottom: 28px;
+font-size: 18px;
+line-height: 22px;
+}
+
+.techs__subtitle {
+margin: 24px auto 0;
+max-width: 262px;
+font-size: 11px;
+line-height: 16px;
+}
+
+.techs__list {
+margin: 50px 0 0;
+grid-template-columns: repeat(2, 84px);
+}
+}
+
+@media (max-width: 340px) {
+
+.techs{
+padding: 70px 18px;
+}
+.techs__title{
+color: #FFF;
+text-align: center;
+font-size: 30px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -1.2px;
+}
+.techs__subtitle{
+width: 292px;
+}
+
+}
