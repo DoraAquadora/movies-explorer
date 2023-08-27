@@ -1,20 +1,20 @@
 import './FilterCheckbox.css';
 
-function FilterCheckbox ({ checked, onChange }) {
+const FilterCheckbox = ({ checked, onChange }) => {
   return (
     <div className="filter-checkbox">
       <label htmlFor="check-box">
         <input
-          id="checkbox"
+          id="check-box"
           className="filter-checkbox__checkbox"
           type="checkbox"
           name="checkbox"
           checked={checked}
           onChange={onChange}
         />
-        <span className="filter-checkbox__pseudo"></span>
+        <span className="filter-checkbox__pseudo-checkbox"></span>
       </label>
-      <span className="filter-checkbox__text">Короткометражки</span>
+      <span className="filter-checkbox__checkbox-text">Короткометражки</span>
     </div>
   )
 }
