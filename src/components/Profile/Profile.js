@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useContext, useState, useEffect } from 'react'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import { useFormAndValidation } from '../../hooks/useFormAndValidation'
+import {EMAIL_REGEX} from '../../hooks/useFormAndValidation';
 import './Profile.css'
 
 const Profile = ({ onSignOut, onChangeUserInfo, msg, setMsg, error }) => {
@@ -67,6 +68,7 @@ const Profile = ({ onSignOut, onChangeUserInfo, msg, setMsg, error }) => {
                   id="email-input"
                   value={values.email || ''}
                   onChange={handleChange}
+                  pattern={EMAIL_REGEX}
                   disabled={!handleChangeInputs}
                 />
                 <span
