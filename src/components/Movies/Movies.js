@@ -23,10 +23,6 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
     },
   })
 
-  useEffect(() => {
-    getAllMovies()
-    getSavedMovies()
-  }, [])
 
   async function getAllMovies() {
     return moviesApi
@@ -84,14 +80,18 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
     } else {
       setNotFound(false)
     }
-    // setSearchedMovies(searched)
-    //  localStorage.setItem('searchedMovies', JSON.stringify(searched))
+     setSearchedMovies(searched)
+    localStorage.setItem('searchedMovies', JSON.stringify(searched))
   }
 
   useEffect(() => {
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
   }, [savedMovies])
 
+    useEffect(() => {
+    getAllMovies()
+    getSavedMovies()
+  }, [])
   const searchState = JSON.parse(localStorage.getItem('searchState')) || {}
   const query = searchState.query || ''
   const isShort = searchState.isShort || false
