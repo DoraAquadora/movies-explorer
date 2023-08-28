@@ -23,12 +23,12 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
     },
   })
 
-   useEffect(() => {
-     getAllMovies()
-     getSavedMovies()
+  useEffect(() => {
+    getAllMovies()
+    getSavedMovies()
   }, [])
 
-    async function getAllMovies() {
+  async function getAllMovies() {
     return moviesApi
       .getAllMovies()
       .then((res) => {
@@ -54,7 +54,6 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
       .finally(() => setIsLoading(false))
   }
 
-  
   const handleSearch = (searchState) => {
     localStorage.setItem('searchState', JSON.stringify(searchState))
     const { query, isShort } = searchState
@@ -85,11 +84,11 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
     } else {
       setNotFound(false)
     }
-     setSearchedMovies(searched)
-    localStorage.setItem('searchedMovies', JSON.stringify(searched))
+    // setSearchedMovies(searched)
+    //  localStorage.setItem('searchedMovies', JSON.stringify(searched))
   }
 
- useEffect(() => {
+  useEffect(() => {
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
   }, [savedMovies])
 
@@ -99,7 +98,7 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
 
   return (
     <main>
-      <SearchForm onSearch={handleSearch}  query={query} checkbox={isShort}  />
+      <SearchForm onSearch={handleSearch} query={query} checkbox={isShort} />
       {error && <p className="cards-error">Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</p>}
       {isEmptyInput && <p className="cards-error">Нужно ввести ключевое слово</p>}
       {notFound && <p className="cards-error">Ничего не найдено</p>}
@@ -118,4 +117,4 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
   )
 }
 
-export default Movies;
+export default Movies
