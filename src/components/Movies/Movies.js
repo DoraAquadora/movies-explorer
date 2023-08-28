@@ -14,17 +14,7 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const mainApi = new MainApi({
-    url: BASE_URL,
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  })
-
-
-  async function getAllMovies() {
+    async function getAllMovies() {
     return moviesApi
       .getAllMovies()
       .then((res) => {
@@ -50,6 +40,7 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
       .finally(() => setIsLoading(false))
   }
 
+  
   const handleSearch = (searchState) => {
     localStorage.setItem('searchState', JSON.stringify(searchState))
     const { query, isShort } = searchState
@@ -84,14 +75,26 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
     localStorage.setItem('searchedMovies', JSON.stringify(searched))
   }
 
+
+  const mainApi = new MainApi({
+    url: BASE_URL,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  })
+
+  useEffect(() => {
+     getAllMovies()
+     getSavedMovies()
+  }, [])
+
+  
   useEffect(() => {
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
   }, [savedMovies])
 
-  useEffect(() => {
-    getAllMovies()
-    getSavedMovies()
-  }, [])
 
 
   const searchState = JSON.parse(localStorage.getItem('searchState')) || {}
