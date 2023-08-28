@@ -23,70 +23,71 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
     },
   })
 
-  async function getAllMovies() {
+   useEffect(() => {
+     getAllMovies()
+     getSavedMovies()
+  }, [])
+
+    async function getAllMovies() {
     return moviesApi
       .getAllMovies()
       .then((res) => {
-        setIsLoading(true);
-        setAllMovies(res);
-        setError(false);
+        setIsLoading(true)
+        setAllMovies(res)
+        setError(false)
       })
       .catch((err) => {
-        setError(true);
-        console.log(err);
-      })
-      .finally(() => setIsLoading(false));
+        setError(true)
+        console.log(err)})
+      .finally(() => setIsLoading(false))
   }
-  
+
   async function getSavedMovies() {
     return mainApi
       .getMovies()
       .then((movies) => {
-        setIsLoading(true);
-        setSavedMovies(movies);
-        localStorage.setItem('savedMovies', JSON.stringify(movies));
+        setIsLoading(true)
+        setSavedMovies(movies)
+        localStorage.setItem('savedMovies', JSON.stringify(movies))
       })
       .catch((err) => console.log(err))
-      .finally(() => setIsLoading(false));
+      .finally(() => setIsLoading(false))
   }
+
   
   const handleSearch = (searchState) => {
-    localStorage.setItem('searchState', JSON.stringify(searchState));
-    const { query, isShort } = searchState;
+    localStorage.setItem('searchState', JSON.stringify(searchState))
+    const { query, isShort } = searchState
     const searched = allMovies.filter((movie) => {
       const searchedRU = movie.nameRU
         .toLowerCase()
-        .includes(query.toLowerCase());
+        .includes(query.toLowerCase())
       const searchedEN = movie.nameEN
         .toLowerCase()
-        .includes(query.toLowerCase());
-      const isSearched = searchedRU || searchedEN;
-      const isShortFilm = movie.duration <= TIMING;
+        .includes(query.toLowerCase())
+      const isSearched = searchedRU || searchedEN
+      const isShortFilm = movie.duration <= TIMING
       if (query && isShort) {
-        return isSearched && isShortFilm;
+        return isSearched && isShortFilm
       } else if (!query) {
-        return null;
+        return null
       } else {
-        return isSearched;
+        return isSearched
       }
-    });
+    })
     if (!query) {
-      setIsEmptyInput(true);
+      setIsEmptyInput(true)
     } else {
-      setIsEmptyInput(false);
+      setIsEmptyInput(false)
     }
     if (query && searched.length === 0) {
-      setNotFound(true);
+      setNotFound(true)
     } else {
-      setNotFound(false);
+      setNotFound(false)
     }
-    setSearchedMovies(searched);
-    localStorage.setItem('searchedMovies', JSON.stringify(searched));
-  };
-  
-  // Call the functions directly instead of using useEffect
-  getAllMovies();
-  getSavedMovies();
+     setSearchedMovies(searched)
+    localStorage.setItem('searchedMovies', JSON.stringify(searched))
+  }
 
  useEffect(() => {
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
@@ -98,7 +99,7 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
 
   return (
     <main>
-      <SearchForm onSearch={handleSearch} query={query} checkbox={isShort} />
+      <SearchForm onSearch={handleSearch}  query={query} checkbox={isShort}  />
       {error && <p className="cards-error">Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</p>}
       {isEmptyInput && <p className="cards-error">Нужно ввести ключевое слово</p>}
       {notFound && <p className="cards-error">Ничего не найдено</p>}
@@ -117,4 +118,4 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
   )
 }
 
-export default Movies
+export default Movies;
