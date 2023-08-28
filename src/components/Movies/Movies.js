@@ -14,68 +14,6 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-    async function getAllMovies() {
-    return moviesApi
-      .getAllMovies()
-      .then((res) => {
-        setIsLoading(true)
-        setAllMovies(res)
-        setError(false)
-      })
-      .catch((err) => {
-        setError(true)
-        console.log(err)})
-      .finally(() => setIsLoading(false))
-  }
-
-  async function getSavedMovies() {
-    return mainApi
-      .getMovies()
-      .then((movies) => {
-        setIsLoading(true)
-        setSavedMovies(movies)
-        localStorage.setItem('savedMovies', JSON.stringify(movies))
-      })
-      .catch((err) => console.log(err))
-      .finally(() => setIsLoading(false))
-  }
-
-  
-  const handleSearch = (searchState) => {
-    localStorage.setItem('searchState', JSON.stringify(searchState))
-    const { query, isShort } = searchState
-    const searched = allMovies.filter((movie) => {
-      const searchedRU = movie.nameRU
-        .toLowerCase()
-        .includes(query.toLowerCase())
-      const searchedEN = movie.nameEN
-        .toLowerCase()
-        .includes(query.toLowerCase())
-      const isSearched = searchedRU || searchedEN
-      const isShortFilm = movie.duration <= TIMING
-      if (query && isShort) {
-        return isSearched && isShortFilm
-      } else if (!query) {
-        return null
-      } else {
-        return isSearched
-      }
-    })
-    if (!query) {
-      setIsEmptyInput(true)
-    } else {
-      setIsEmptyInput(false)
-    }
-    if (query && searched.length === 0) {
-      setNotFound(true)
-    } else {
-      setNotFound(false)
-    }
-     setSearchedMovies(searched)
-    localStorage.setItem('searchedMovies', JSON.stringify(searched))
-  }
-
-
   const mainApi = new MainApi({
     url: BASE_URL,
     headers: {
@@ -85,17 +23,74 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
     },
   })
 
-  useEffect(() => {
-     getAllMovies()
-     getSavedMovies()
-  }, [])
-
+  async function getAllMovies() {
+    return moviesApi
+      .getAllMovies()
+      .then((res) => {
+        setIsLoading(true);
+        setAllMovies(res);
+        setError(false);
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      })
+      .finally(() => setIsLoading(false));
+  }
   
-  useEffect(() => {
+  async function getSavedMovies() {
+    return mainApi
+      .getMovies()
+      .then((movies) => {
+        setIsLoading(true);
+        setSavedMovies(movies);
+        localStorage.setItem('savedMovies', JSON.stringify(movies));
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));
+  }
+  
+  const handleSearch = (searchState) => {
+    localStorage.setItem('searchState', JSON.stringify(searchState));
+    const { query, isShort } = searchState;
+    const searched = allMovies.filter((movie) => {
+      const searchedRU = movie.nameRU
+        .toLowerCase()
+        .includes(query.toLowerCase());
+      const searchedEN = movie.nameEN
+        .toLowerCase()
+        .includes(query.toLowerCase());
+      const isSearched = searchedRU || searchedEN;
+      const isShortFilm = movie.duration <= TIMING;
+      if (query && isShort) {
+        return isSearched && isShortFilm;
+      } else if (!query) {
+        return null;
+      } else {
+        return isSearched;
+      }
+    });
+    if (!query) {
+      setIsEmptyInput(true);
+    } else {
+      setIsEmptyInput(false);
+    }
+    if (query && searched.length === 0) {
+      setNotFound(true);
+    } else {
+      setNotFound(false);
+    }
+    setSearchedMovies(searched);
+    localStorage.setItem('searchedMovies', JSON.stringify(searched));
+  };
+  
+  // Call the functions directly instead of using useEffect
+  getAllMovies();
+  getSavedMovies();
+
+ useEffect(() => {
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
   }, [savedMovies])
-
-
 
   const searchState = JSON.parse(localStorage.getItem('searchState')) || {}
   const query = searchState.query || ''
