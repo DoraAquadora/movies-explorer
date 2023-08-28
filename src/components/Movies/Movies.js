@@ -88,10 +88,12 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
   }, [savedMovies])
 
-    useEffect(() => {
+  useEffect(() => {
     getAllMovies()
     getSavedMovies()
   }, [])
+
+
   const searchState = JSON.parse(localStorage.getItem('searchState')) || {}
   const query = searchState.query || ''
   const isShort = searchState.isShort || false
