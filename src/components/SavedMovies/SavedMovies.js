@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import MainApi from '../../utils/MainApi'
-import { BASE_URL, SHORT_TIMING } from '../../utils/constants'
+import { BASE_URL, TIMING } from '../../utils/constants'
 
 const SavedMovies = () => {
   const [notFound, setNotFound] = useState(false)
@@ -67,7 +67,7 @@ const SavedMovies = () => {
         .toLowerCase()
         .includes(query.toLowerCase())
       const isSearched = searchedRU || searchedEN
-      const isShortFilm = movie.duration <= SHORT_TIMING
+      const isShortFilm = movie.duration <= TIMING
       if (isShort) {
         return isSearched && isShortFilm
       } else {
