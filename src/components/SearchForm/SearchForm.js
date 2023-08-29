@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import searchimg from '../../images/search.svg';
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
-import './SearchForm.css';
+import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
+import './SearchForm.css'
 
 const SearchForm = ({ onSearch, query, checkbox }) => {
   const [searchValue, setSearchValue] = useState(query || '')

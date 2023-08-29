@@ -1,14 +1,11 @@
-import { useState, useEffect } from 'react';
-import SearchForm from '../SearchForm/SearchForm';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import MainApi from '../../utils/MainApi';
-import { BASE_URL, TIMING } from '../../utils/constants';
+import { useState, useEffect } from 'react'
+import SearchForm from '../SearchForm/SearchForm'
+import MoviesCardList from '../MoviesCardList/MoviesCardList'
+import MainApi from '../../utils/MainApi'
+import { BASE_URL, SHORT_TIMING } from '../../utils/constants'
 
 const SavedMovies = () => {
   const [notFound, setNotFound] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(true); //false
-  const [isLoading, setIsLoading] = useState(false);
-
   const [result, setResult] = useState(
     JSON.parse(localStorage.getItem('savedMovies'))
   )
@@ -23,12 +20,8 @@ const SavedMovies = () => {
   })
 
   useEffect(() => {
-if(isLoggedIn){
-  getSavedMovies()
-  .catch((error) => console.log(error))
-} 
-  }, [isLoggedIn])
-
+    getSavedMovies()
+  }, [])
 
   async function getSavedMovies() {
     return mainApi
@@ -38,8 +31,6 @@ if(isLoggedIn){
         localStorage.setItem('savedMovies', JSON.stringify(movies))
       })
       .catch((err) => console.log(err))
-      .finally(() => setIsLoading(false))
-
   }
 
   const [savedMovies, setSavedMovies] = useState(
@@ -76,7 +67,7 @@ if(isLoggedIn){
         .toLowerCase()
         .includes(query.toLowerCase())
       const isSearched = searchedRU || searchedEN
-      const isShortFilm = movie.duration <= TIMING
+      const isShortFilm = movie.duration <= SHORT_TIMING
       if (isShort) {
         return isSearched && isShortFilm
       } else {
@@ -92,7 +83,6 @@ if(isLoggedIn){
     setResult(searched)
   }
 
-
   return (
     <main>
       <SearchForm onSearch={handleSearch} />
@@ -107,4 +97,4 @@ if(isLoggedIn){
   )
 }
 
-export default SavedMovies;
+export default SavedMovies
