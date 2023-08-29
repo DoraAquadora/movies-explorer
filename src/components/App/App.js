@@ -27,7 +27,7 @@ import './App.css';
 
 function App() {
   const [menuActive, setMenuActive] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); //false
+  const [isLoggedIn, setIsLoggedIn] = useState(true); //false
   const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
@@ -43,7 +43,7 @@ function App() {
     { value: 'Фильмы', href: '/movies' },
     { value: 'Сохранённые фильмы', href: '/saved-movies' },
     { value: 'Аккаунт', href: '/profile', icon: iconPath},
-  ]
+  ]  
 
   const mainApi = new MainApi({
     url: BASE_URL,

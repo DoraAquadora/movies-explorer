@@ -6,6 +6,9 @@ import { BASE_URL, TIMING } from '../../utils/constants';
 
 const SavedMovies = () => {
   const [notFound, setNotFound] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true); //false
+  const [isLoading, setIsLoading] = useState(false);
+
   const [result, setResult] = useState(
     JSON.parse(localStorage.getItem('savedMovies'))
   )
@@ -20,8 +23,12 @@ const SavedMovies = () => {
   })
 
   useEffect(() => {
-    getSavedMovies()
-  }, [])
+if(isLoggedIn){
+  getSavedMovies()
+  .catch((error) => console.log(error))
+} 
+  }, [isLoggedIn])
+
 
   async function getSavedMovies() {
     return mainApi
@@ -31,6 +38,8 @@ const SavedMovies = () => {
         localStorage.setItem('savedMovies', JSON.stringify(movies))
       })
       .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false))
+
   }
 
   const [savedMovies, setSavedMovies] = useState(
@@ -82,6 +91,7 @@ const SavedMovies = () => {
     }
     setResult(searched)
   }
+
 
   return (
     <main>

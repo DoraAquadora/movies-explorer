@@ -14,19 +14,20 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const mainApi = new MainApi({
-    url: BASE_URL,
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  })
+  // const mainApi = new MainApi({
+  //   url: BASE_URL,
+  //   headers: {
+  //     Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+  //     Accept: 'application/json',
+  //     'Content-Type': 'application/json',
+  //   },
+  // })
 
-  useEffect(() => {
-    getAllMovies()
-    getSavedMovies()
-  }, [])
+useEffect(()=>{
+  getAllMovies()
+  // getSavedMovies()
+})
+
 
   async function getAllMovies() {
     return moviesApi
@@ -42,17 +43,17 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
       .finally(() => setIsLoading(false))
   }
 
-  async function getSavedMovies() {
-    return mainApi
-      .getMovies()
-      .then((movies) => {
-        setIsLoading(true)
-        setSavedMovies(movies)
-        localStorage.setItem('savedMovies', JSON.stringify(movies))
-      })
-      .catch((err) => console.log(err))
-      .finally(() => setIsLoading(false))
-  }
+  // async function getSavedMovies() {
+  //   return mainApi
+  //     .getMovies()
+  //     .then((movies) => {
+  //       setIsLoading(true)
+  //       setSavedMovies(movies)
+  //       localStorage.setItem('savedMovies', JSON.stringify(movies))
+  //     })
+  //     .catch((err) => console.log(err))
+  //     .finally(() => setIsLoading(false))
+  // }
 
   const handleSearch = (searchState) => {
     localStorage.setItem('searchState', JSON.stringify(searchState))
