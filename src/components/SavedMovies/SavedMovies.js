@@ -23,7 +23,7 @@ const SavedMovies = () => {
     getSavedMovies()
   }, [])
 
-  async function getSavedMovies() {
+   function getSavedMovies() {
     return mainApi
       .getMovies()
       .then((movies) => {
@@ -37,7 +37,7 @@ const SavedMovies = () => {
     JSON.parse(localStorage.getItem('savedMovies'))
   )
 
-  async function handleDeleteMovie(id) {
+   function handleDeleteMovie(id) {
     return mainApi
       .deleteMovie(id)
       .then((res) => {
@@ -52,7 +52,6 @@ const SavedMovies = () => {
           : localStorage.setItem(
             'savedMovies',
             JSON.stringify(updatedFilteredMovies))
-        window.location.reload();
       })
       .catch((error) => console.log(error))
   }
