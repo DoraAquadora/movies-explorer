@@ -14,6 +14,46 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
+  const mainApi = new MainApi({
+    url: BASE_URL,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  })
+
+  useEffect(() => {
+    getAllMovies()
+    getSavedMovies()
+  }, [])
+
+  async function getAllMovies() {
+    return moviesApi
+      .getAllMovies()
+      .then((res) => {
+        setIsLoading(true)
+        setAllMovies(res)
+        setError(false)
+      })
+      .catch((err) => {
+        setError(true)
+        console.log(err)})
+      .finally(() => setIsLoading(false))
+  }
+
+  async function getSavedMovies() {
+    return mainApi
+      .getMovies()
+      .then((movies) => {
+        setIsLoading(true)
+        setSavedMovies(movies)
+        localStorage.setItem('savedMovies', JSON.stringify(movies))
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false))
+  }
+
   const handleSearch = (searchState) => {
     localStorage.setItem('searchState', JSON.stringify(searchState))
     const { query, isShort } = searchState
@@ -56,47 +96,6 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
   const query = searchState.query || ''
   const isShort = searchState.isShort || false
 
-  const mainApi = new MainApi({
-    url: BASE_URL,
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  })
-
-  useEffect(() => {
-    getAllMovies()
-    getSavedMovies()
-  }, [])
-
-  async function getAllMovies() {
-    return moviesApi
-      .getAllMovies()
-      .then((res) => {
-        setIsLoading(true)
-        setAllMovies(res)
-        setError(false)
-      })
-      .catch((err) => {
-        setError(true)
-        console.log(err)})
-      .finally(() => setIsLoading(false))
-  }
-
-  async function getSavedMovies() {
-    return mainApi
-    .getMovies()
-      .then((movies) => {
-        setIsLoading(true)
-        setSavedMovies(movies)
-        localStorage.setItem('savedMovies', JSON.stringify(movies))
-      })
-      .catch((err) => console.log(err))
-      .finally(() => setIsLoading(false))
-
-  }
-
   return (
     <main>
       <SearchForm onSearch={handleSearch} query={query} checkbox={isShort} />
@@ -118,4 +117,4 @@ const Movies = ({ setSavedMovies, savedMovies, onLikeMovie }) => {
   )
 }
 
-export default Movies
+export default Movies;
