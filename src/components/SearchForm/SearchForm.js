@@ -7,6 +7,7 @@ const SearchForm = ({ onSearch, query, checkbox }) => {
   const [searchValue, setSearchValue] = useState(query || '')
   const [isSwitched, setSwitched] = useState(checkbox || false)
 
+
   const handleChangeSearchValue = (e) => {
     setSearchValue(e.target.value)
   }
@@ -27,7 +28,9 @@ const SearchForm = ({ onSearch, query, checkbox }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     submitSettings(isSwitched)
+
   }
+
 
   return (
     <section className="searchform">
