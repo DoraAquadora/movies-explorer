@@ -1,63 +1,127 @@
-import { APIIMGIMG_URL } from './constants';
-
-export default class MainApi {
-  constructor({ url, headers }) {
-    this._url = url
-    this._headers = headers
+/* eslint-disable no-sequences */
+class MainApi {
+  constructor(options) {
+    this._headers = options.headers;
+    this._url = options.baseUrl;
   }
 
-  _checkRes(res) {
-    if (res.ok) {
-      return res.json()
-    } else {
-      return Promise.reject(`Ошибка: ${res.statusText}`)
-    }
-  }
-
-  getUserInfo() {
-    return fetch(`${this._url}/users/me`, {
+  getUser() {
+    return this._request(`${this._url}/users/me`, {
+      method: 'GET',
       headers: this._headers,
-    }).then(this._checkRes)
+    });
   }
 
-  changeUserInfo(data) {
-    return fetch(`${this._url}/users/me`, {
-      method: 'PATCH',
+  getSavedMovies() {
+    return this._request(`${this._url}/movies`, {
+      method: 'GET',
       headers: this._headers,
-      body: JSON.stringify(data),
-    }).then(this._checkRes)
+    });
   }
 
-  getMovies() {
-    return fetch(`${this._url}/movies`, {
+  deleteCardFromServer(_id) {
+    return this._request(`${this._url}/movies/${_id}`, {
+      method: 'DELETE',
       headers: this._headers,
-    }).then(this._checkRes)
+    });
   }
 
-  saveMovie(movie) {
-    return fetch(`${this._url}/movies`, {
+  postToSignup({ name, email, password }) {
+    return this._request(`${this._url}/signup`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
-        country: movie.country,
-        director: movie.director,
-        duration: movie.duration,
-        year: movie.year,
-        description: movie.description,
-        image: `${APIIMGIMG_URL}${movie.image.url}`,
-        trailerLink: movie.trailerLink,
-        thumbnail: `${APIIMGIMG_URL}${movie.image.formats.thumbnail.url}`,
-        movieId: movie.id,
-        nameRU: movie.nameRU,
-        nameEN: movie.nameEN,
+        name,
+        email,
+        password,
       }),
-    }).then(this._checkRes)
+    });
   }
 
-  deleteMovie(id) {
-    return fetch(`${this._url}/movies/${id}`, {
-      method: 'DELETE',
+  postToSignin({ email, password }) {
+    return this._request(`${this._url}/signin`, {
+      method: 'POST',
       headers: this._headers,
-    }).then(this._checkRes)
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+  }
+
+  getToSignout() {
+    return this._request(`${this._url}/signout`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
+  postMovie({
+    country,
+    director,
+    year,
+    duration,
+    description,
+    image: imageUrl,
+    trailerLink,
+    id: movieId,
+    nameRU,
+    nameEN,
+  }) {
+    const image = `https://api.nomoreparties.co/${imageUrl.url}`;
+    const thumbnail = `https://api.nomoreparties.co/${imageUrl.formats.thumbnail.url}`;
+    return this._request(`${this._url}/movies`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        country,
+        director,
+        year,
+        duration,
+        description,
+        image,
+        trailerLink,
+        thumbnail,
+        movieId,
+        nameRU,
+        nameEN,
+      }),
+    });
+  }
+
+  changeProfileInfo({ name, email }) {
+    return this._request(`${this._url}/users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name,
+        email,
+      }),
+    });
+  }
+
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return res.json().then((error) => Promise.reject(error));
+  }
+
+  _request(url, options) {
+    const updatedOptions = {
+      ...options,
+      credentials: 'include',
+    };
+
+    return fetch(url, updatedOptions).then((res) => this._checkResponse(res));
   }
 }
+const mainApi = new MainApi({
+  baseUrl: 'https://api.doramovies.nomoredomains.sbs',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+export default mainApi;

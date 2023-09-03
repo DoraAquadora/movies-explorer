@@ -1,16 +1,29 @@
-export const APIFILM_URL = 'https://api.nomoreparties.co/beatfilm-movies';
-export const APIIMGIMG_URL = 'https://api.nomoreparties.co';
-export const BASE_URL = 'https://api.doramovies.nomoredomains.sbs';
-//export const BASE_URL = 'http://localhost:3000';
-export const MOBILE_SC = 320;
-export const MIDDLE_SC = 1278; 
-export const DESK_SC = 1290;
-export const MOVIES_MOBILE = 5;
-export const MOVIES_MOBILE_ADD = 2;
-export const MOVIES_MIDDLE = 8;
-export const MOVIES_MIDDLE_ADD = 2;
-export const MOVIES_DESK = 16;
-export const MOVIES_DESK_ADD = 4;
-export const TIMING = 3;
+export const registerInputs = [
+  { title: 'Имя', type: 'text', name: 'name' },
+  { title: 'E-mail', type: 'email', name: 'email' },
+  { title: 'Пароль', type: 'password', name: 'password' }
+];
 
+export const loginInputs = [
+  { title: 'E-mail', type: 'email', name: 'email' },
+  { title: 'Пароль', type: 'password', name: 'password' },
+];
+export const registerMargin = 'register__button_margin';
+export const loginMargin = 'login__button_margin';
+export const sayHiRegister = 'Добро пожаловать!';
+export const sayHiLogin = 'Рады видеть!';
+export const buttonRegister = [
+  'Зарегистрироваться',
+  'Уже зарегистрированы?',
+  ' Войти',
+];
+export const buttonLogin = [
+  'Войти',
+  'Еще не зарегистрированы?',
+  ' Регистрация',
+];
 
+export const errorMessage =
+' Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.';
+export const errorKeyWord = 'Нужно ввести ключевое слово';
+export const errorRequest = 'Ничего не найдено';

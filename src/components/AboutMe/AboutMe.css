@@ -3,6 +3,23 @@ background-color: #202020;
 padding: 94px 70px 101px 70px;
 }
 
+.title {
+    margin: 0;
+    color: #FFF;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.88px;
+  }
+  
+  .line {
+    width: 100%;
+    height: 1px;
+    margin-top: 23px;
+    background-color: #DADADA;
+  }
+
 .about-me__title{
 margin: 0;
 padding: 0;
@@ -118,8 +135,20 @@ height: 307px;
 }
 
 }
+@media (max-width: 578px)  {
+  .about-me__container{
+    margin-top: 60px;
+    flex-direction: column-reverse;
+    align-items: center;
+    }
 
-@media (max-width: 576px)  {
+.about-me__photo{
+  width: 292px;
+  height: 350px;
+  }
+}
+
+@media (max-width: 450px)  {
 .about-me {
 padding: 70px 14px;
 }
@@ -128,6 +157,14 @@ padding-bottom: 28px;
 font-size: 18px;
 line-height: 22px;
 }
+.title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+  
+  .line {
+    margin-top: 30px;
+  }
 .about-me__container{
 margin-top: 60px;
 flex-direction: column-reverse;
