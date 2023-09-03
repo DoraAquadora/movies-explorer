@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css';
+import './header.css';
 import { useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 
